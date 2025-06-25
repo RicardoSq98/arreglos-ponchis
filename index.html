@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Arreglos Ponchis - Galería de Productos</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -15,51 +17,69 @@
     <nav class="indice">
         <h3>Que producto te interesa:</h3>
         <ul>
-            <li><a href="#Globos Burbuja">🎉 Globos Burbuja</a></li>
-            <li><a href="#centros">🌼 Centros de Mesa</a></li>
-            <li><a href="#aniversarios">💖 Aniversarios</a></li>
+            <li><a href="#globos">🎈 Globos Burbuja</a></li>
+            <li><a href="#arreglos">🌼 Arreglos</a></li>
+            <li><a href="#mesa">💖 Centros de Mesa</a></li>
             <li><a href="#detalles">🎁 Detalles Especiales</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="cumpleanos" class="categoria">
-            <h2>🎉 Arreglos de Cumpleaños</h2>
+        <section id="globos" class="categoria">
+            <h2>🎈Globos Burbuja</h2>
             <div class="galeria">
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/cumple1.jpg" alt="Cumpleaños 1" />
-                    <p>Arreglo con globos y flores</p>
+                    <a href="imagenes/burbuja40.jpg" data-lightbox="globos" data-title="Globos burbuja pintados a mano">
+                        <img loading="lazy" src="imagenes/burbuja40.jpg" alt="Burbuja 1" />
+                    </a>
+                    <p>Globos burbuja pintados a mano</p>
                 </div>
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/cumple2.jpg" alt="Cumpleaños 2" />
-                    <p>Canasta con dulces y peluche</p>
+                    <a href="imagenes/burbuja41.jpg" data-lightbox="globos" data-title="Globos burbuja pintados a mano">
+                        <img loading="lazy" src="imagenes/burbuja41.jpg" alt="Burbuja 2" />
+                    </a>
+                    <p>Globos burbuja pintados a mano</p>
                 </div>
+                <div class="producto">
+                    <a href="imagenes/burbuja42.jpg" data-lightbox="globos" data-title="Globos burbuja con felicitaciones">
+                        <img loading="lazy" src="imagenes/burbuja42.jpg" alt="Burbuja 3" />
+                    </a>
+                    <p>Globos burbuja con felicitaciones</p>
+                </div>                
             </div>
         </section>
 
-        <section id="centros" class="categoria">
-            <h2>🌼 Centros de Mesa</h2>
+        <section id="arreglos" class="categoria">
+            <h2>🌼 Arreglos</h2>
             <div class="galeria">
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/centro1.jpg" alt="Centro de Mesa 1" />
+                    <a href="imagenes/centro1.jpg" data-lightbox="arreglos" data-title="Centro con flores naturales">
+                        <img loading="lazy" src="imagenes/centro1.jpg" alt="Centro de Mesa 1" />
+                    </a>
                     <p>Centro con flores naturales</p>
                 </div>
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/centro2.jpg" alt="Centro de Mesa 2" />
+                    <a href="imagenes/centro2.jpg" data-lightbox="arreglos" data-title="Decoración rústica">
+                        <img loading="lazy" src="imagenes/centro2.jpg" alt="Centro de Mesa 2" />
+                    </a>
                     <p>Decoración rústica</p>
                 </div>
             </div>
         </section>
 
-        <section id="aniversarios" class="categoria">
-            <h2>💖 Aniversarios</h2>
+        <section id="mesa" class="categoria">
+            <h2>💖 Centros de Mesa</h2>
             <div class="galeria">
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/aniversario1.jpg" alt="Aniversario 1" />
+                    <a href="imagenes/aniversario1.jpg" data-lightbox="mesa" data-title="Ramo de rosas rojas">
+                        <img loading="lazy" src="imagenes/aniversario1.jpg" alt="Aniversario 1" />
+                    </a>
                     <p>Ramo de rosas rojas</p>
                 </div>
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/aniversario2.jpg" alt="Aniversario 2" />
+                    <a href="imagenes/aniversario2.jpg" data-lightbox="mesa" data-title="Arreglo en forma de corazón">
+                        <img loading="lazy" src="imagenes/aniversario2.jpg" alt="Aniversario 2" />
+                    </a>
                     <p>Arreglo en forma de corazón</p>
                 </div>
             </div>
@@ -69,11 +89,15 @@
             <h2>🎁 Detalles Especiales</h2>
             <div class="galeria">
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/detalle1.jpg" alt="Detalle Especial 1" />
+                    <a href="imagenes/detalle1.jpg" data-lightbox="detalles" data-title="Caja sorpresa personalizada">
+                        <img loading="lazy" src="imagenes/detalle1.jpg" alt="Detalle Especial 1" />
+                    </a>
                     <p>Caja sorpresa personalizada</p>
                 </div>
                 <div class="producto">
-                    <img loading="lazy" src="imagenes/detalle2.jpg" alt="Detalle Especial 2" />
+                    <a href="imagenes/detalle2.jpg" data-lightbox="detalles" data-title="Mini bouquet con chocolates">
+                        <img loading="lazy" src="imagenes/detalle2.jpg" alt="Detalle Especial 2" />
+                    </a>
                     <p>Mini bouquet con chocolates</p>
                 </div>
             </div>
@@ -83,5 +107,8 @@
     <footer>
         <p>&copy; 2025 Arreglos Ponchis</p>
     </footer>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 </html>
