@@ -481,7 +481,27 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.slider-container').forEach(function(container) {
     const track = container.querySelector('.slider-track');
     const totalItems = track.querySelectorAll('.producto').length;
-    const visibleItems = 3;  // Cambia este número si quieres más o menos visibles
+    let visibleItems = 3;
+
+    // Ajustar visibleItems en móvil
+    function updateVisibleItems() {
+      if (window.innerWidth <= 600) {
+        visibleItems = 1;
+      } else {
+        visibleItems = 3;
+      }
+    }
+    updateVisibleItems();
+    window.addEventListener('resize', () => {
+      updateVisibleItems();
+      // Ajusta currentIndex si necesario para no pasar límites
+      if (currentIndex > totalItems - visibleItems) {
+        currentIndex = totalItems - visibleItems;
+        if (currentIndex < 0) currentIndex = 0;
+        updateSlider();
+      }
+    });
+
     let currentIndex = 0;
 
     container.querySelector('.next').addEventListener('click', function() {
@@ -503,37 +523,8 @@ document.addEventListener('DOMContentLoaded', function() {
       track.style.transform = `translateX(-${percentage}%)`;
       track.style.transition = "transform 0.3s ease";
     }
-  });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.slider-container').forEach(function(container) {
-    const track = container.querySelector('.slider-track');
-    const totalItems = track.querySelectorAll('.producto').length;
-    const visibleItems = 3;
-    let currentIndex = 0;
-
-    container.querySelector('.next').addEventListener('click', function() {
-      if (currentIndex < totalItems - visibleItems) {
-        currentIndex++;
-        updateSlider();
-      }
-    });
-
-    container.querySelector('.prev').addEventListener('click', function() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-      }
-    });
-
-    function updateSlider() {
-      const percentage = (100 / visibleItems) * currentIndex;
-      track.style.transform = `translateX(-${percentage}%)`;
-      track.style.transition = "transform 0.3s ease";
-    }
-
-    // ✅ Aquí empieza el código para swipe en móviles 👇
+    // Swipe en móvil
     let startX = 0;
     let endX = 0;
 
@@ -547,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     track.addEventListener('touchend', function() {
       let diff = startX - endX;
-      let swipeThreshold = 50;  // Cambia si quieres más o menos sensibilidad
+      let swipeThreshold = 50;
 
       if (diff > swipeThreshold && currentIndex < totalItems - visibleItems) {
         currentIndex++;
@@ -557,7 +548,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSlider();
       }
     });
-    // ✅ Aquí termina el código de swipe 👆
   });
 });
 
