@@ -477,56 +477,33 @@
     </a>
 
 <script>
-  const track = document.querySelector(".slider-track");
-  const totalItems = document.querySelectorAll(".slider-track .producto").length;
-  const visibleItems = 3;
-  let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.slider-container').forEach(function(container) {
+    const track = container.querySelector('.slider-track');
+    const totalItems = track.querySelectorAll('.producto').length;
+    const visibleItems = 3;  // Cambia este número si quieres más o menos visibles
+    let currentIndex = 0;
 
-  document.querySelector(".slider-btn.next").addEventListener("click", () => {
-    if (currentIndex < totalItems - visibleItems) {
-      currentIndex++;
-      updateSlider();
+    container.querySelector('.next').addEventListener('click', function() {
+      if (currentIndex < totalItems - visibleItems) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+
+    container.querySelector('.prev').addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+
+    function updateSlider() {
+      const percentage = (100 / visibleItems) * currentIndex;
+      track.style.transform = `translateX(-${percentage}%)`;
+      track.style.transition = "transform 0.3s ease";
     }
   });
-
-  document.querySelector(".slider-btn.prev").addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlider();
-    }
-  });
-
-  function updateSlider() {
-    const percentage = (100 / visibleItems) * currentIndex;
-    track.style.transform = `translateX(-${percentage}%)`;
-  }
-</script>
-
-<script>
-document.querySelectorAll('.slider-container').forEach(function(container) {
-  const track = container.querySelector('.slider-track');
-  const totalItems = track.querySelectorAll('.producto').length;
-  const visibleItems = 3;  // Cambia a 4 si quieres mostrar 4 imágenes
-  let currentIndex = 0;
-
-  container.querySelector('.next').addEventListener('click', function() {
-    if (currentIndex < totalItems - visibleItems) {
-      currentIndex++;
-      updateSlider();
-    }
-  });
-
-  container.querySelector('.prev').addEventListener('click', function() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlider();
-    }
-  });
-
-  function updateSlider() {
-    const percentage = (100 / visibleItems) * currentIndex;
-    track.style.transform = `translateX(-${percentage}%)`;
-  }
 });
 </script>
 
