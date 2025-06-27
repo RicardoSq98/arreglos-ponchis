@@ -505,6 +505,62 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.slider-container').forEach(function(container) {
+    const track = container.querySelector('.slider-track');
+    const totalItems = track.querySelectorAll('.producto').length;
+    const visibleItems = 3;
+    let currentIndex = 0;
+
+    container.querySelector('.next').addEventListener('click', function() {
+      if (currentIndex < totalItems - visibleItems) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+
+    container.querySelector('.prev').addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+
+    function updateSlider() {
+      const percentage = (100 / visibleItems) * currentIndex;
+      track.style.transform = `translateX(-${percentage}%)`;
+      track.style.transition = "transform 0.3s ease";
+    }
+
+    // ✅ Aquí empieza el código para swipe en móviles 👇
+    let startX = 0;
+    let endX = 0;
+
+    track.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+    });
+
+    track.addEventListener('touchmove', function(e) {
+      endX = e.touches[0].clientX;
+    });
+
+    track.addEventListener('touchend', function() {
+      let diff = startX - endX;
+      let swipeThreshold = 50;  // Cambia si quieres más o menos sensibilidad
+
+      if (diff > swipeThreshold && currentIndex < totalItems - visibleItems) {
+        currentIndex++;
+        updateSlider();
+      } else if (diff < -swipeThreshold && currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+    // ✅ Aquí termina el código de swipe 👆
+  });
+});
+
 </script>
 
 
